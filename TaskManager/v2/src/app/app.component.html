@@ -1,0 +1,23 @@
+<header>
+  TaskManager
+</header>
+<h1>Lista zadań</h1>
+<div>
+  <button (click)="addNewTask()">Dodaj nowe</button>
+</div>
+<ul>
+  <ng-container *ngFor="let task of tasks; trackBy: trackByFn">
+    <!-- Wyemitowanie zdarzenia z poziomu komponentu SingleTask -->
+    <app-single-task 
+      [task]="task"
+      (onDelete)="deleteTask($event)"
+      (onStatusChange)="changeStatus($event)" 
+      >
+    </app-single-task>
+  <!-- Próba zmiany status z poziomu komponentu App -->
+  <button (click)="handleChangeStatus(task.id)">Zmień status (z poziomu App)</button>
+</ng-container>
+</ul>
+<footer>
+  copyright @ TaskManager.com
+</footer>
