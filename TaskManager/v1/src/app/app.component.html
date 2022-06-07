@@ -1,0 +1,18 @@
+<header>
+  TaskManager
+</header>
+<h1>Lista zadań</h1>
+<div>
+  <button (click)="addNewTask()">Dodaj nowe</button>
+</div>
+<ul>
+  <app-single-task *ngFor="let task of tasks; trackBy: trackByFn" 
+    [task]="task"
+    (onDelete)="deleteTask($event)"
+    (onStatusChange)="changeStatus($event)"
+    >
+  </app-single-task>
+</ul>
+<footer>
+  copyright @ TaskManager.com
+</footer>
