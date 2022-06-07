@@ -1,0 +1,12 @@
+<app-projection>
+  <app-test></app-test>
+</app-projection>
+
+<ng-template>
+  <h1>Hello world</h1>
+</ng-template>
+
+<!-- Div zostanie zastąpiony przez jeden z szablonów, w zależności od wyniku warunku -->
+<div *ngIf="flag === true; then template1 else template2"></div>
+<ng-template #template1><app-test></app-test></ng-template>
+<ng-template #template2>Lorem ipsum</ng-template>
