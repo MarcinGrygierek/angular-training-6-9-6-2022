@@ -1,0 +1,17 @@
+<!-- Template variable użyte w kontekście elementu -->
+<div #myDiv>Lorem ipsum</div>
+<p>
+  Ilość znaków wewnątrz diva: {{ myDiv.innerText.length }}
+</p>
+
+<input #login type="text" name="login" value="Lorem ipsum">
+<button (click)="login.focus()">Ustaw focus</button>
+
+<!-- Wyciągamy interesującą nas wartość z komponentu podrzędnego -->
+<app-test #test2></app-test>
+<app-test #test *ngIf="flag"></app-test>
+<app-test #test3></app-test>
+<p>
+  {{ test3.publicVal }}
+</p>
+<button (click)="displaySum()">Wyświetl sumę liczników</button>
