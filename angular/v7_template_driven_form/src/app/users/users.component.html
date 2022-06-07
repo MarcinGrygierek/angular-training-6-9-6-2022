@@ -1,0 +1,16 @@
+<app-page-title [title]="title"></app-page-title>
+<h2 [id]="calculatedID">Ilość użytkowników: {{ users.length }}</h2>
+
+<ul>
+    <ng-container *ngFor="let user of users; trackBy: trackByFn; let i = index">
+        <li *ngIf="user.hidden === false">
+            {{ user.name }}
+            <button (click)="handleUserDelete(i, user.id)">Usuń</button>
+        </li>
+    </ng-container>
+</ul>
+
+<p *ngIf="users.length > 5">Masz już ponad 5 użytkowników!</p>
+
+<button (click)="handleClick()">Usuń użytkownika z poziomu UsersComponent</button>
+<button (click)="handleSecondClick()">Dodaj użytkownika</button>
