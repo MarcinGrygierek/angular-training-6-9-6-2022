@@ -1,0 +1,31 @@
+<header>
+  TaskManager
+</header>
+
+<app-page-content title="Lista zadań">
+  <div additionalHeader>
+
+    <button (click)="getTasksTotalTime()">Pokaż łączny czas obecności zadań na liście</button>
+  </div>
+
+  <app-new-task (onNewTask)="addNewTask($event)"></app-new-task>
+
+  <ul>
+    <ng-container *ngFor="let task of tasks; trackBy: trackByFn">
+      <ng-container *ngIf="task.hidden === false">
+        <!-- Wyemitowanie zdarzenia z poziomu komponentu SingleTask -->
+        <app-single-task 
+          [task]="task"
+          (onDelete)="deleteTask($event)"
+          (onStatusChange)="changeStatus($event)" 
+          >
+        </app-single-task>
+        <!-- Próba zmiany status z poziomu komponentu App -->
+        <button (click)="handleChangeStatus(task.id)">Zmień status (z poziomu App)</button>
+      </ng-container>
+    </ng-container>
+  </ul>
+</app-page-content>
+<footer>
+  copyright @ TaskManager.com
+</footer>

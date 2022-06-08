@@ -1,0 +1,12 @@
+<li>
+    <h2>{{ task.name }}</h2>
+    <span>
+        {{ getStatusName(task.status) }}
+    </span>
+    <div>
+        <button (click)="handleDelete(task.id)">Usuń</button>
+        <button *ngIf="task.status !== statusNew" (click)="handleStatusChange(task.id, statusNew)">Oznacz jako Nowe</button>
+        <button *ngIf="task.status !== statusInProgress" (click)="handleStatusChange(task.id, statusInProgress)">Oznacz jako W trakcie</button>
+        <button *ngIf="task.status !== statusDone" (click)="handleStatusChange(task.id, statusDone)">Oznacz jako Zakończone</button>
+    </div>
+</li>

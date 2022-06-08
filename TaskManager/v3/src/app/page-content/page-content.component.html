@@ -1,0 +1,11 @@
+<div class="container">
+    <section>
+        <header>
+            <h1>{{ title }}</h1>
+            <ng-content select="[additionalHeader]"></ng-content>
+        </header>
+    </section>
+    <div class="content">
+        <ng-content></ng-content>
+    </div>
+</div>
