@@ -1,0 +1,14 @@
+<li class="card mt-3 mb-3">
+    <div class="card-body">
+    <h2>{{ task.name }}</h2>
+    <span class="badge bg-primary mb-2">
+        {{ getStatusName(task.status) }}
+    </span>
+    <div>
+        <button class="btn btn-danger" (click)="handleDelete(task.id)">Usuń</button>
+        <button class="btn btn-secondary" *ngIf="task.status !== statusNew" (click)="handleStatusChange(task.id, statusNew)">Oznacz jako Nowe</button>
+        <button class="btn btn-primary" *ngIf="task.status !== statusInProgress" (click)="handleStatusChange(task.id, statusInProgress)">Oznacz jako W trakcie</button>
+        <button class="btn btn-success" *ngIf="task.status !== statusDone" (click)="handleStatusChange(task.id, statusDone)">Oznacz jako Zakończone</button>
+    </div>
+    </div>
+</li>
