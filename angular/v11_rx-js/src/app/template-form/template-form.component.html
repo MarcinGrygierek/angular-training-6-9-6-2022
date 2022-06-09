@@ -1,0 +1,19 @@
+<form (ngSubmit)="handleSubmit()" #form="ngForm">
+    <div>
+        <input [(ngModel)]="data.login" type="text" name="login" required minlength="3" #login="ngModel">
+        <div *ngIf="login.errors && login.touched">
+            <p *ngIf="login.errors.required">Login jest wymagany</p>
+            <p *ngIf="login.errors.minlength">Minimalna długość to {{ login.errors.minlength.requiredLength }}</p>
+        </div>
+
+    </div> 
+    <div>
+        <input [(ngModel)]="data.pwd" type="password" name="pwd" required minlength="8" #pwd="ngModel">
+        <div *ngIf="pwd.errors && pwd.touched">
+            <p *ngIf="pwd.errors.required">Hasło jest wymagane</p>
+            <p *ngIf="pwd.errors.minlength">Minimalna długość to {{ pwd.errors.minlength.requiredLength }}</p>
+        </div>
+    </div>
+    <button type="submit" [disabled]="form.invalid">Wyślij</button>
+</form>
+<!-- { "minlength": { "requiredLength": 8, "actualLength": 3 }  -->

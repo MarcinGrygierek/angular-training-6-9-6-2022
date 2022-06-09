@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+    <div class="input-group">
+        <input type="text" formControlName="name" class="form-control">
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Dodaj</button>
+    </div>
+
+    <div *ngIf="hasErrors('name')">
+        <p *ngIf="getErrors('name').required">Musisz podać nazwę zadania</p>
+        <p *ngIf="getErrors('name').minlength">Nazwa zadania musi mieć min. 5 znaków</p>
+    </div>
+</form>

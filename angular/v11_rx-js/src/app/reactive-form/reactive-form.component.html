@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+    <div>
+        <input type="text" formControlName="login">
+        <div *ngIf="hasErrors('login')">
+           <p *ngIf="getErrors('login').required">Login jest wymagany</p>
+           <p *ngIf="getErrors('login').minlength">Minimalna długość loginu to 3 znaki</p>
+        </div>
+    </div>
+    <div>
+        <input type="password" formControlName="pwd">
+        <div *ngIf="hasErrors('pwd')">
+            <p *ngIf="getErrors('pwd').required">Hasło jest wymagane</p>
+            <p *ngIf="getErrors('pwd').minlength">Minimalna długość hasła to 8 znaków</p>
+         </div>
+    </div>
+    <button type="submit" [disabled]="form.invalid">Wyślij</button>
+</form>

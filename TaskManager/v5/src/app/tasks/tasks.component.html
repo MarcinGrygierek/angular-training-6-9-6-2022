@@ -1,0 +1,28 @@
+<app-page-content title="Lista zadań">
+    <div additionalHeader class="mb-3">
+  
+      <button class="btn btn-primary" (click)="getTasksTotalTime()">Pokaż łączny czas obecności zadań na liście</button>
+    </div>
+  
+    <!-- Wersja template driven -->
+    <!-- <app-new-task (onNewTask)="addNewTask($event)"></app-new-task> --> 
+  
+    <!-- Wersja reaktywna -->
+    <app-new-task-reactive (onNewTask)="addNewTask($event)"></app-new-task-reactive>
+  
+    <ul>
+      <ng-container *ngFor="let task of tasks; trackBy: trackByFn">
+        <ng-container *ngIf="task.hidden === false">
+          <!-- Wyemitowanie zdarzenia z poziomu komponentu SingleTask -->
+          <app-single-task 
+            [task]="task"
+            (onDelete)="deleteTask($event)"
+            (onStatusChange)="changeStatus($event)" 
+            >
+          </app-single-task>
+          <!-- Próba zmiany status z poziomu komponentu App -->
+          <button (click)="handleChangeStatus(task.id)">Zmień status (z poziomu App)</button>
+        </ng-container>
+      </ng-container>
+    </ul>
+  </app-page-content>
