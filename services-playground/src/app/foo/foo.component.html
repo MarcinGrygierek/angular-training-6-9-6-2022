@@ -1,4 +1,7 @@
 <h1>Foo instance</h1>
+<p>Foo - Wartość z serwisu: {{valueFromSource}}</p>
+<p>Foo - Ilość liczb: {{counter}}</p>
+<button (click)="addNewNumber()">Dodaj nową liczbę</button>
 <ul>
     <li *ngFor="let el of data">
         {{ el }}

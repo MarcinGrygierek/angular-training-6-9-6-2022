@@ -1,1 +1,3 @@
-<p>{{randomValue}}</p>
+<ul>
+    <li *ngFor="let val of numbers$ | async">{{val}}</li>
+</ul>

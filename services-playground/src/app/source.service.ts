@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SourceService {
-  randomValue: number = 0;
+  private numbers: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([1, 2, 3]);
+  public numbers$: Observable<number[]>;
 
   constructor() {
-    console.log('service is constructed')
-    this.randomValue = Math.random() * 1000;
-   }
+    this.numbers$ = this.numbers.asObservable();
+  }
+
+  addNumber(newNumber: number) {
+    const current = this.numbers.getValue();
+    this.numbers.next([...current, newNumber]);
+  }
 }
